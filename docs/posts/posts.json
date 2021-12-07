@@ -22,7 +22,7 @@
     "description": "Essa análise teve como objetivo analisar os salários na base da RAIS. Esse projeto foi feito na Semana Data Science na Prática do Curso-R.",
     "author": [
       {
-        "name": "Andres Pinto",
+        "name": "Andres David Pinto Hurtado",
         "url": "https://example.com/norajones"
       }
     ],
@@ -30,7 +30,7 @@
     "categories": [],
     "contents": "\r\nEsse é meu primeiro projeto no portfólio.\r\n\r\n\r\n\r\n",
     "preview": {},
-    "last_modified": "2021-12-07T00:46:57-03:00",
+    "last_modified": "2021-12-07T00:53:46-03:00",
     "input_file": "anlise-da-base-rais.knit.md"
   }
 ]
