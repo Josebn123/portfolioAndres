@@ -51,10 +51,10 @@ conexao <- dbConnect(
   billing = "semana-dsp-334503"
 )
 
-
 primeiras_cinco_linhas <- collect(head(select(tbl(conexao, "microdados_vinculos"), everything()), 5))
 
 primeiras_cinco_linhas
+
 ```
 
 
