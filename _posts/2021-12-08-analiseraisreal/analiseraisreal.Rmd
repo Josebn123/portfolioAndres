@@ -48,10 +48,9 @@ conexao <- dbConnect(
   bigquery(),
   project = "basedosdados",
   dataset = "br_me_rais",
-  billing = "semana-dsp"
+  billing = "semana-dsp-334503"
 )
 
-head(select(tbl(conexao, "microdados_vinculos"), everything()), 5)
 
 primeiras_cinco_linhas <- collect(head(select(tbl(conexao, "microdados_vinculos"), everything()), 5))
 
