@@ -58,6 +58,63 @@ primeiras_cinco_linhas <- collect(head(select(tbl(conexao, "microdados_vinculos"
 knitr::kable(primeiras_cinco_linhas) 
 
 ```
+```{r}
+
+cinco_linhas_pipe <- tbl(conexao, "microdados_vinculos") %>% 
+  select(everything()) %>%
+  head(5) %>%
+  collect()
+
+cinco_linhas_pipe
+
+# atalho pipe: ctrl+shift+M
+# antes e atualmente: (magrittr): %>%
+# atualmente: |>
+
+```
+A base de dados que queremos analisar aqui é a base de pessoas que (potencialmente) tabalham com ciencia de dados. Existe um Código Brasileior de ocupacoes (CBO), que tem um cadastro de todas as ocupacoes formais no Brasil. Vamos pegar alguns códigos que sao relacionados a ciencia de dados e filtrar a base dea RAIS ara obter os dados dessas pessoas.
+
+Pergunta principal de pesquisa: 
+
+> Quem trabalha com ciencia de dados ganha quanto?
+
+```{r}
+
+codigos_cbo <- c( 
+  "252515", "252525", "211110",
+  # pesquisa/cientista 
+  "211205", "411035", "211210", "131120","211215" 
+  # ocupações estatísticas
+  )
 
 
+microdados_tbl <- tbl(conexao, "microdados_vinculos") %>% 
+  select(everything()) %>% 
+  filter(
+    ano >= 2013,
+    cbo_2002 %in% codigos_cbo
+  )
+
+tabela_microdados_vinculos <- collect(microdados_tbl)
+
+```
+
+## Pergunta de pesquisa
+
+
+
+```{r}
+
+library(ggplot2)
+
+tabela_medias <- tabela_microdados_vinculos %>% 
+  group_by(ano) %>% 
+  summarise(media_salario = mean(valor_remuneracao_media))
+
+tabela_medias
+
+ggplot(tabela_microdados_vinculos) +
+  aes(x = ano)
+
+```
 
