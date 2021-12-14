@@ -3,6 +3,7 @@ title: "Portfolio do Andres"
 description: |
   Portfolio do Andres
 output_dir: "docs"
+theme: tema_site.css
 navbar:
   right:
     - text: "Home"

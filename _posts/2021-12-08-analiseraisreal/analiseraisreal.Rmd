@@ -1,5 +1,5 @@
 ---
-title: "analise_rais_real"
+title: "Análise de dados na RAIS"
 description: |
   A short description of the post.
 author:
@@ -102,7 +102,7 @@ microdados_tbl <- tbl(conexao, "microdados_vinculos") %>%
 
 tabela_microdados_vinculos <- collect(microdados_tbl)
 
-saveRDS(tabela_microdados_vinculos, "tabela_microdados_vinculos.rds")
+#saveRDS(tabela_microdados_vinculos, "tabela_microdados_vinculos.rds")
 
 ```
 
@@ -123,7 +123,7 @@ Perguntas especificas
 
 ### Como variam os salários médios no tempo?
 
-```{r}
+```{r, fig.cap = "Comparacao dos salarios medios da base ao longo do tempo."}
 tabela_microdados_vinculos <- 
   readRDS("tabela_microdados_vinculos.rds")
 
@@ -146,7 +146,10 @@ tabela_medias <- tabela_microdados_vinculos %>%
 ggplot(tabela_medias) +
   aes(x = ano, y = media_salario) +
   geom_col() +
-  scale_x_continuous(breaks = 2013:2019)
+  scale_x_continuous(breaks = 2013:2019) +
+  labs(x = "Ano", y = "Salário Médio (R$)") + 
+  theme_bw()
+
 
 ```
 
@@ -185,7 +188,9 @@ Agora olhando em gráfico
 tabela_media_uf %>% 
   ggplot() +
   aes(x = sigla_uf, y = media) +
-  geom_col()
+  geom_col() +
+  labs(x = "Unidade da Federação", y = "Remuneração média na UF (R$)") +
+  theme_bw()
 
 ```
 
@@ -206,7 +211,8 @@ tabela_media_uf %>%
   ggplot()+
   aes(y = sigla_uf_fator, x = media) + 
   labs(y = "Unidades da Federacao", x = "Média Salarial (R$)") +
-  geom_col()
+  geom_col() +
+  theme_bw()
   
 ```
 
@@ -233,7 +239,8 @@ tabela_mediana_uf %>%
   ) %>% 
   ggplot() + 
   aes(x = mediana, y = sigla_uf) +
-  geom_col()
+  geom_col() +
+  theme_bw()
   
 
 ```
@@ -259,7 +266,7 @@ tabela_resumo_sexo %>%
 #!: masculino; 2: Femenino
 ```
 
-### Os salários variam por etnia?
+### Os salários variam por Raca/cor?
 
 ```{r}
 
@@ -285,4 +292,31 @@ tabela_resumo_raca_cor %>%
 # 9: Nao identificado
 
 ```
+```{r}
+
+tabela_resumo_sexo_raca_cor <- tabela_microdados_vinculos %>% 
+  group_by(raca_cor, sexo) %>% 
+  summarise(
+    media = mean(valor_remuneracao_media),
+    mediana = median(valor_remuneracao_media)
+  )
+
+```
+
+```{r}
+tabela_resumo_sexo_raca_cor %>% 
+  knitr::kable()
+```
+Diferenças na remuneração de homens e mulheres em função da variavél Raça Cor
+
+```{r}
+ggplot(tabela_resumo_sexo_raca_cor) +
+  aes(x = raca_cor, y = mediana, fill = sexo) + 
+  geom_col(position = 'dodge') +
+  theme_bw() +
+  scale_fill_viridis_d() + 
+  labs(x = "Raça Cor (Classificação da RAIS)", y = "Remuneração média (R$)", fill = "Sexo:\n 1=Masc.\n 2=Fem.")
+
+```
+
 

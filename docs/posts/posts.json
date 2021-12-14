@@ -1,7 +1,7 @@
 [
   {
     "path": "posts/2021-12-08-analiseraisreal/",
-    "title": "analise_rais_real",
+    "title": "Análise de dados na RAIS",
     "description": "A short description of the post.",
     "author": [
       {
@@ -11,9 +11,9 @@
     ],
     "date": "2021-12-08",
     "categories": [],
-    "contents": "\r\nNeste relatório estamos interessados em responder a pergunta:\r\n“Quanto ganha um cientista de dados?”\r\nPara isso vamos utilizar a base da RAIS anonimizada\r\nAcessando os dados da RAIS\r\nVamos utilizar o datalake da iniciativa base dos dados.\r\n\r\n\r\n\r\nAbaixo esta o código que carrega as primeiras 5 linhas da tabela microdados\r\n\r\n\r\n\r\nPrimeiras 5 linhas da tabela microdados com pipe\r\n\r\n\r\n\r\nA base de dados que queremos analisar aqui é a base de pessoas que (potencialmente) tabalham com ciencia de dados. Existe um Código Brasileior de ocupacoes (CBO), que tem um cadastro de todas as ocupacoes formais no Brasil. Vamos pegar alguns códigos que sao relacionados a ciencia de dados e filtrar a base da RAIS para obter os dados dessas pessoas.\r\nPergunta principal de pesquisa:\r\n\r\nQuem trabalha com ciencia de dados ganha quanto?\r\n\r\nBase completa\r\n\r\n\r\n\r\nPergunta de pesquisa\r\nQuanto ganha uma pessoa que trabalha com ciencia de dados?\r\nPerguntas especificas\r\nQuanto o valor médio varia no tempo?\r\nQuanto o valor médio varia regionalmente?\r\nQuanto o valor médio varia por caracteristicas das pessoas? -Genero -Raca/cor -Idade\r\n-[Desafio] Qual cargo tem maior taxa de crescimento dentro daquele setor da economia {CNAE} proporcionalmente a municipios com mais pessoas empregadas naquela CBO.\r\nComo variam os salários médios no tempo?\r\n\r\n\r\n\r\nTabela dos salário médios\r\n\r\nano\r\nmedia_salario\r\n2013\r\n3457.553\r\n2014\r\n3702.131\r\n2015\r\n4229.452\r\n2016\r\n4409.327\r\n2017\r\n4969.977\r\n2018\r\n4886.116\r\n2019\r\n4969.408\r\n\r\nQuanto o salário médio varia regionalmente?\r\n\r\n\r\n\r\nEssa visualizacao a princípio é melhor em tabela:\r\n\r\nsigla_uf\r\nmedia\r\nAC\r\n2213.220\r\nAL\r\n1921.249\r\nAM\r\n4003.298\r\nAP\r\n2488.921\r\nBA\r\n3444.450\r\nCE\r\n3583.833\r\nDF\r\n6290.945\r\nES\r\n2289.896\r\nGO\r\n3053.561\r\nMA\r\n1518.701\r\nMG\r\n3373.300\r\nMS\r\n2671.339\r\nMT\r\n2520.127\r\nPA\r\n4239.167\r\nPB\r\n1852.823\r\nPE\r\n4014.886\r\nPI\r\n1556.301\r\nPR\r\n2835.612\r\nRJ\r\n7303.597\r\nRN\r\n2495.838\r\nRO\r\n1943.391\r\nRR\r\n2780.840\r\nRS\r\n3434.072\r\nSC\r\n3033.095\r\nSE\r\n3733.273\r\nSP\r\n5053.901\r\nTO\r\n1981.932\r\n\r\nAgora olhando em gráfico\r\n\r\n\r\n\r\nEsse gráfico é legal até para colocar na análise exploratoria DF e RJ aparentemente estao muito acima dos demais estados, conforme destaca o gráfico abaixo:\r\n\r\n\r\n\r\nSerá que essa mesma conclusao permanece quando escolhemos a mediana como medida resumo dos salários?\r\n\r\nsigla_uf\r\nmediana\r\nRJ\r\n7528.560\r\nDF\r\n4715.790\r\nSP\r\n3862.090\r\nAM\r\n3276.510\r\nPE\r\n2540.750\r\nPA\r\n2255.790\r\nRS\r\n2211.380\r\nMS\r\n2199.530\r\nSE\r\n2134.990\r\nMG\r\n2124.070\r\nRN\r\n2050.670\r\nRR\r\n2000.000\r\nBA\r\n1923.050\r\nMT\r\n1872.510\r\nGO\r\n1858.930\r\nSC\r\n1833.685\r\nCE\r\n1790.210\r\nPR\r\n1728.040\r\nAP\r\n1473.145\r\nES\r\n1450.890\r\nTO\r\n1352.080\r\nRO\r\n1347.035\r\nAC\r\n1334.445\r\nAL\r\n1279.175\r\nPB\r\n1222.690\r\nPI\r\n1093.530\r\nMA\r\n1008.330\r\n\r\n\r\n\r\n\r\nOs salários variam por sexo?\r\n\r\n\r\n\r\n\r\nsexo\r\nmedia\r\nmediana\r\n1\r\n5331.746\r\n3905.72\r\n2\r\n3600.132\r\n2300.71\r\n\r\nOs salários variam por etnia?\r\n\r\n\r\n\r\n\r\nraca_cor\r\nmedia\r\nmediana\r\n1\r\n3085.090\r\n2748.890\r\n2\r\n4287.588\r\n2888.915\r\n4\r\n3014.454\r\n2072.205\r\n6\r\n6783.212\r\n5338.735\r\n8\r\n2732.073\r\n1749.345\r\n9\r\n5656.755\r\n4888.030\r\n\r\n\r\n\r\n\r\n",
+    "contents": "\r\nNeste relatório estamos interessados em responder a pergunta:\r\n“Quanto ganha um cientista de dados?”\r\nPara isso vamos utilizar a base da RAIS anonimizada\r\nAcessando os dados da RAIS\r\nVamos utilizar o datalake da iniciativa base dos dados.\r\n\r\n\r\n\r\nAbaixo esta o código que carrega as primeiras 5 linhas da tabela microdados\r\n\r\n\r\n\r\nPrimeiras 5 linhas da tabela microdados com pipe\r\n\r\n\r\n\r\nA base de dados que queremos analisar aqui é a base de pessoas que (potencialmente) tabalham com ciencia de dados. Existe um Código Brasileior de ocupacoes (CBO), que tem um cadastro de todas as ocupacoes formais no Brasil. Vamos pegar alguns códigos que sao relacionados a ciencia de dados e filtrar a base da RAIS para obter os dados dessas pessoas.\r\nPergunta principal de pesquisa:\r\n\r\nQuem trabalha com ciencia de dados ganha quanto?\r\n\r\nBase completa\r\n\r\n\r\n\r\nPergunta de pesquisa\r\nQuanto ganha uma pessoa que trabalha com ciencia de dados?\r\nPerguntas especificas\r\nQuanto o valor médio varia no tempo?\r\nQuanto o valor médio varia regionalmente?\r\nQuanto o valor médio varia por caracteristicas das pessoas? -Genero -Raca/cor -Idade\r\n-[Desafio] Qual cargo tem maior taxa de crescimento dentro daquele setor da economia {CNAE} proporcionalmente a municipios com mais pessoas empregadas naquela CBO.\r\nComo variam os salários médios no tempo?\r\n\r\n\r\n\r\nFigure 1: Comparacao dos salarios medios da base ao longo do tempo.\r\n\r\n\r\n\r\nTabela dos salário médios\r\n\r\nano\r\nmedia_salario\r\n2013\r\n3457.553\r\n2014\r\n3702.131\r\n2015\r\n4229.452\r\n2016\r\n4409.327\r\n2017\r\n4969.977\r\n2018\r\n4886.116\r\n2019\r\n4969.408\r\n\r\nQuanto o salário médio varia regionalmente?\r\n\r\n\r\n\r\nEssa visualizacao a princípio é melhor em tabela:\r\n\r\nsigla_uf\r\nmedia\r\nAC\r\n2213.220\r\nAL\r\n1921.249\r\nAM\r\n4003.298\r\nAP\r\n2488.921\r\nBA\r\n3444.450\r\nCE\r\n3583.833\r\nDF\r\n6290.945\r\nES\r\n2289.896\r\nGO\r\n3053.561\r\nMA\r\n1518.701\r\nMG\r\n3373.300\r\nMS\r\n2671.339\r\nMT\r\n2520.127\r\nPA\r\n4239.167\r\nPB\r\n1852.823\r\nPE\r\n4014.886\r\nPI\r\n1556.301\r\nPR\r\n2835.612\r\nRJ\r\n7303.597\r\nRN\r\n2495.838\r\nRO\r\n1943.391\r\nRR\r\n2780.840\r\nRS\r\n3434.072\r\nSC\r\n3033.095\r\nSE\r\n3733.273\r\nSP\r\n5053.901\r\nTO\r\n1981.932\r\n\r\nAgora olhando em gráfico\r\n\r\n\r\n\r\nEsse gráfico é legal até para colocar na análise exploratoria DF e RJ aparentemente estao muito acima dos demais estados, conforme destaca o gráfico abaixo:\r\n\r\n\r\n\r\nSerá que essa mesma conclusao permanece quando escolhemos a mediana como medida resumo dos salários?\r\n\r\nsigla_uf\r\nmediana\r\nRJ\r\n7528.560\r\nDF\r\n4715.790\r\nSP\r\n3862.090\r\nAM\r\n3276.510\r\nPE\r\n2540.750\r\nPA\r\n2255.790\r\nRS\r\n2211.380\r\nMS\r\n2199.530\r\nSE\r\n2134.990\r\nMG\r\n2124.070\r\nRN\r\n2050.670\r\nRR\r\n2000.000\r\nBA\r\n1923.050\r\nMT\r\n1872.510\r\nGO\r\n1858.930\r\nSC\r\n1833.685\r\nCE\r\n1790.210\r\nPR\r\n1728.040\r\nAP\r\n1473.145\r\nES\r\n1450.890\r\nTO\r\n1352.080\r\nRO\r\n1347.035\r\nAC\r\n1334.445\r\nAL\r\n1279.175\r\nPB\r\n1222.690\r\nPI\r\n1093.530\r\nMA\r\n1008.330\r\n\r\n\r\n\r\n\r\nOs salários variam por sexo?\r\n\r\n\r\n\r\n\r\nsexo\r\nmedia\r\nmediana\r\n1\r\n5331.746\r\n3905.72\r\n2\r\n3600.132\r\n2300.71\r\n\r\nOs salários variam por Raca/cor?\r\n\r\n\r\n\r\n\r\nraca_cor\r\nmedia\r\nmediana\r\n1\r\n3085.090\r\n2748.890\r\n2\r\n4287.588\r\n2888.915\r\n4\r\n3014.454\r\n2072.205\r\n6\r\n6783.212\r\n5338.735\r\n8\r\n2732.073\r\n1749.345\r\n9\r\n5656.755\r\n4888.030\r\n\r\n\r\n\r\n\r\n\r\nraca_cor\r\nsexo\r\nmedia\r\nmediana\r\n1\r\n1\r\n3159.286\r\n2816.000\r\n1\r\n2\r\n2960.319\r\n2595.230\r\n2\r\n1\r\n5242.819\r\n3650.350\r\n2\r\n2\r\n3662.732\r\n2561.010\r\n4\r\n1\r\n3399.138\r\n2284.440\r\n4\r\n2\r\n2736.654\r\n1927.200\r\n6\r\n1\r\n7896.945\r\n6314.250\r\n6\r\n2\r\n5805.064\r\n4680.625\r\n8\r\n1\r\n3229.096\r\n2030.745\r\n8\r\n2\r\n2427.978\r\n1609.990\r\n9\r\n1\r\n6663.501\r\n6702.870\r\n9\r\n2\r\n4575.110\r\n2571.270\r\n\r\nDiferenças na remuneração de homens e mulheres em função da variavél Raça Cor\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
     "preview": "posts/2021-12-08-analiseraisreal/analiseraisreal_files/figure-html5/unnamed-chunk-5-1.png",
-    "last_modified": "2021-12-13T23:35:46-03:00",
+    "last_modified": "2021-12-14T02:13:59-03:00",
     "input_file": "analiseraisreal.knit.md"
   },
   {
@@ -22,16 +22,16 @@
     "description": "Welcome to our new blog, Portfolio do Andres. We hope you enjoy \nreading what we have to say!",
     "author": [
       {
-        "name": "Nora Jones",
-        "url": "https://example.com/norajones"
+        "name": "Andres David Pinto Hurtado",
+        "url": {}
       }
     ],
     "date": "2021-12-07",
     "categories": [],
     "contents": "\r\n\r\n\r\n\r\n",
     "preview": {},
-    "last_modified": "2021-12-07T00:19:31-03:00",
-    "input_file": {}
+    "last_modified": "2021-12-14T01:33:51-03:00",
+    "input_file": "welcome.knit.md"
   },
   {
     "path": "posts/2021-12-07-anlise-da-base-rais/",
@@ -40,14 +40,14 @@
     "author": [
       {
         "name": "Andres David Pinto Hurtado",
-        "url": "https://example.com/norajones"
+        "url": {}
       }
     ],
     "date": "2021-12-07",
     "categories": [],
     "contents": "\r\nEsse é meu primeiro projeto no portfólio.\r\n\r\n\r\n\r\n",
     "preview": {},
-    "last_modified": "2021-12-07T22:12:29-03:00",
+    "last_modified": "2021-12-14T01:32:28-03:00",
     "input_file": "anlise-da-base-rais.knit.md"
   }
 ]
