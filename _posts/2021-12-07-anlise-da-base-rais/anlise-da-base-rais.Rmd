@@ -4,7 +4,6 @@ description: |
   Essa análise teve como objetivo analisar os salários na base da RAIS. Esse projeto foi feito na Semana Data Science na Prática do Curso-R.
 author:
   - name: Andres David Pinto Hurtado
-    url: https://example.com/norajones
 date: 2021-12-07
 output:
   distill::distill_article:

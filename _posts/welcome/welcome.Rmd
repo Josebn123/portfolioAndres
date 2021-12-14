@@ -4,8 +4,7 @@ description: |
   Welcome to our new blog, Portfolio do Andres. We hope you enjoy 
   reading what we have to say!
 author:
-  - name: Nora Jones 
-    url: https://example.com/norajones
+  - name: Andres David Pinto Hurtado 
     affiliation: Spacely Sprockets
     affiliation_url: https://example.com/spacelysprokets
 date: 12-07-2021
