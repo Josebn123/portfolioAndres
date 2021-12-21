@@ -36,6 +36,7 @@ library(dplyr)
 Abaixo esta o código que carrega as primeiras 5 linhas da tabela microdados
 
 ```{r, eval = FALSE}
+
 # Como eu faria se fosse ler um arquivo
 
 # tabela_normal <- read.csv("https://raw.githubusercontent.com/curso-r/main-r4ds-1/master/dados/imdb.csv")
@@ -43,6 +44,7 @@ Abaixo esta o código que carrega as primeiras 5 linhas da tabela microdados
 # head(tabela_normal, 5)
 
 # Como eu faco se uso um SGBD (Sistema de gerenciamento de bases de dados)
+
 
 bigrquery::bq_auth("andrespinto0327@gmail.com")
 
@@ -75,11 +77,12 @@ cinco_linhas_pipe
 # atualmente: |>
 
 ```
-A base de dados que queremos analisar aqui é a base de pessoas que (potencialmente) tabalham com ciencia de dados. Existe um Código Brasileior de ocupacoes (CBO), que tem um cadastro de todas as ocupacoes formais no Brasil. Vamos pegar alguns códigos que sao relacionados a ciencia de dados e filtrar a base da RAIS para obter os dados dessas pessoas.
+
+A base de dados que queremos analisar aqui é a base de pessoas que (potencialmente) tabalham com ciência de dados. Existe um Código Brasileiro de ocupações (CBO), que tem um cadastro de todas as ocupações formais no Brasil. Vamos pegar alguns códigos que são relacionados a ciência de dados e filtrar a base da RAIS para obter os dados dessas pessoas.
 
 Pergunta principal de pesquisa: 
 
-> Quem trabalha com ciencia de dados ganha quanto?
+> Quem trabalha com ciência de dados ganha quanto?
 
  Base completa
  
@@ -108,15 +111,15 @@ tabela_microdados_vinculos <- collect(microdados_tbl)
 
 ## Pergunta de pesquisa
 
-- Quanto ganha uma pessoa que trabalha com ciencia de dados?
+- Quanto ganha uma pessoa que trabalha com ciência de dados?
 
-Perguntas especificas
+Perguntas específicas
 
 - Quanto o valor médio varia no tempo?
 - Quanto o valor médio varia regionalmente?
 - Quanto o valor médio varia por caracteristicas das pessoas?
-  -Genero
-  -Raca/cor
+  -Gênero
+  -Raça/cor
   -Idade
 
 -[Desafio] Qual cargo tem maior taxa de crescimento dentro daquele setor da economia {CNAE} proporcionalmente a municipios com mais pessoas empregadas naquela CBO. 
@@ -124,6 +127,7 @@ Perguntas especificas
 ### Como variam os salários médios no tempo?
 
 ```{r, fig.cap = "Comparacao dos salarios medios da base ao longo do tempo."}
+
 tabela_microdados_vinculos <- 
   readRDS("tabela_microdados_vinculos.rds")
 
@@ -156,6 +160,7 @@ ggplot(tabela_medias) +
 Tabela dos salário médios
 
 ```{r}
+
 library(knitr)
 tabela_medias %>% 
   kable()
@@ -174,13 +179,14 @@ tabela_media_uf <- tabela_microdados_vinculos %>%
 
 ```
 
-Essa visualizacao a princípio é melhor em tabela:
+Essa visualização a princípio é melhor em tabela:
 
 ```{r}
 
 knitr::kable(tabela_media_uf)
 
 ```
+
 Agora olhando em gráfico
 
 ```{r}
@@ -194,7 +200,7 @@ tabela_media_uf %>%
 
 ```
 
-Esse gráfico é legal até para colocar na análise exploratoria DF e RJ aparentemente estao muito acima dos demais estados, conforme destaca o gráfico abaixo:
+Esse gráfico é legal até para colocar na análise exploratoria DF e RJ aparentemente estão muito acima dos demais estados, conforme destaca o gráfico abaixo:
 
 ```{r}
 # tabela_media_uf %>% 
@@ -216,7 +222,7 @@ tabela_media_uf %>%
   
 ```
 
-Será que essa mesma conclusao permanece quando escolhemos a mediana como medida resumo dos salários?
+Será que essa mesma conclusão permanece quando escolhemos a mediana como medida resumo dos salários?
 
 
 ```{r}
@@ -304,18 +310,27 @@ tabela_resumo_sexo_raca_cor <- tabela_microdados_vinculos %>%
 ```
 
 ```{r}
+
 tabela_resumo_sexo_raca_cor %>% 
   knitr::kable()
+
 ```
 Diferenças na remuneração de homens e mulheres em função da variavél Raça Cor
 
 ```{r}
+
 ggplot(tabela_resumo_sexo_raca_cor) +
   aes(x = raca_cor, y = mediana, fill = sexo) + 
   geom_col(position = 'dodge') +
   theme_bw() +
   scale_fill_viridis_d() + 
   labs(x = "Raça Cor (Classificação da RAIS)", y = "Remuneração média (R$)", fill = "Sexo:\n 1=Masc.\n 2=Fem.")
+
+```
+
+```{r}
+
+lm(valor_remuneracao_media ~ sexo, data = tabela_microdados_vinculos)
 
 ```
 

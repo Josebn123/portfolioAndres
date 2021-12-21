@@ -1,7 +1,7 @@
 ---
 title: "Análise da base RAIS"
 description: |
-  Essa análise teve como objetivo analisar os salários na base da RAIS. Esse projeto foi feito na Semana Data Science na Prática do Curso-R.
+  Essa análise teve como objetivo analisar os salários na base da Relação Anual de Informações Sociais (RAIS) que é um relatório de informações socioeconômicas solicitado pela Secretaria de Trabalho do Ministério da Economia brasileiro às pessoas jurídicas e outros empregadores anualmente.Este projeto foi feito na Semana Data Science na Prática do Curso-R.
 author:
   - name: Andres David Pinto Hurtado
 date: 2021-12-07
